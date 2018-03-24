@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 set(CMAKE_RELATIVE_PATH_TOP_SOURCE "/Users/dlytv/BelyashDB")
-set(CMAKE_RELATIVE_PATH_TOP_BINARY "/Users/dlytv/BelyashDB")
+set(CMAKE_RELATIVE_PATH_TOP_BINARY "/Users/dlytv/BelyashDB/build")
 
 # Force unix paths in dependencies.
 set(CMAKE_FORCE_UNIX_PATHS 1)

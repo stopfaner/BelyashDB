@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/dlytv/BelyashDB/main.cpp" "/Users/dlytv/BelyashDB/CMakeFiles/BelyashDB.dir/main.cpp.o"
+  "/Users/dlytv/BelyashDB/main.cpp" "/Users/dlytv/BelyashDB/build/CMakeFiles/BelyashDB.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

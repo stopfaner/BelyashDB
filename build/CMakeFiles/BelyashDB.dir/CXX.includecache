@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dlytv/BelyashDB/core/cli/input_buffer.cpp
+stddef.h
+-
+iostream
+-
+stdio.h
+-
+
+/Users/dlytv/BelyashDB/main.cpp
+core/cli/input_buffer.cpp
+/Users/dlytv/BelyashDB/core/cli/input_buffer.cpp
+iostream
+-
+
