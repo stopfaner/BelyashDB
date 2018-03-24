@@ -1,0 +1,3 @@
+/Users/dlytv/BelyashDB/CMakeFiles/rebuild_cache.dir
+/Users/dlytv/BelyashDB/CMakeFiles/edit_cache.dir
+/Users/dlytv/BelyashDB/CMakeFiles/BelyashDB.dir
