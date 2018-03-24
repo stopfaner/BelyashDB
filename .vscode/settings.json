@@ -12,6 +12,12 @@
         "algorithm": "cpp",
         "iostream": "cpp",
         "bitset": "cpp",
-        "system_error": "cpp"
+        "system_error": "cpp",
+        "functional": "cpp",
+        "fstream": "cpp",
+        "locale": "cpp",
+        "iosfwd": "cpp",
+        "memory": "cpp",
+        "iterator": "cpp"
     }
 }
