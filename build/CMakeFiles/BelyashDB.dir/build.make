@@ -79,6 +79,7 @@ BelyashDB_EXTERNAL_OBJECTS =
 
 BelyashDB: CMakeFiles/BelyashDB.dir/main.cpp.o
 BelyashDB: CMakeFiles/BelyashDB.dir/build.make
+BelyashDB: log4cpp/liblog4cpp.a
 BelyashDB: CMakeFiles/BelyashDB.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/dlytv/BelyashDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable BelyashDB"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BelyashDB.dir/link.txt --verbose=$(VERBOSE)

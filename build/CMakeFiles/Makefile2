@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /Users/dlytv/BelyashDB/build
 # Target rules for target CMakeFiles/BelyashDB.dir
 
 # All Build rule for target.
-CMakeFiles/BelyashDB.dir/all:
+CMakeFiles/BelyashDB.dir/all: log4cpp/CMakeFiles/log4cpp.dir/all
 	$(MAKE) -f CMakeFiles/BelyashDB.dir/build.make CMakeFiles/BelyashDB.dir/depend
 	$(MAKE) -f CMakeFiles/BelyashDB.dir/build.make CMakeFiles/BelyashDB.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/dlytv/BelyashDB/build/CMakeFiles --progress-num=1,2 "Built target BelyashDB"
@@ -76,7 +76,7 @@ all: CMakeFiles/BelyashDB.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/BelyashDB.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dlytv/BelyashDB/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dlytv/BelyashDB/build/CMakeFiles 50
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/BelyashDB.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dlytv/BelyashDB/build/CMakeFiles 0
 .PHONY : CMakeFiles/BelyashDB.dir/rule
@@ -93,6 +93,61 @@ CMakeFiles/BelyashDB.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/BelyashDB.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory log4cpp
+
+# Convenience name for "all" pass in the directory.
+log4cpp/all: log4cpp/CMakeFiles/log4cpp.dir/all
+
+.PHONY : log4cpp/all
+
+# Convenience name for "clean" pass in the directory.
+log4cpp/clean: log4cpp/CMakeFiles/log4cpp.dir/clean
+
+.PHONY : log4cpp/clean
+
+# Convenience name for "preinstall" pass in the directory.
+log4cpp/preinstall:
+
+.PHONY : log4cpp/preinstall
+
+#=============================================================================
+# Target rules for target log4cpp/CMakeFiles/log4cpp.dir
+
+# All Build rule for target.
+log4cpp/CMakeFiles/log4cpp.dir/all:
+	$(MAKE) -f log4cpp/CMakeFiles/log4cpp.dir/build.make log4cpp/CMakeFiles/log4cpp.dir/depend
+	$(MAKE) -f log4cpp/CMakeFiles/log4cpp.dir/build.make log4cpp/CMakeFiles/log4cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/dlytv/BelyashDB/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50 "Built target log4cpp"
+.PHONY : log4cpp/CMakeFiles/log4cpp.dir/all
+
+# Include target in all.
+all: log4cpp/CMakeFiles/log4cpp.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+log4cpp/CMakeFiles/log4cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dlytv/BelyashDB/build/CMakeFiles 48
+	$(MAKE) -f CMakeFiles/Makefile2 log4cpp/CMakeFiles/log4cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dlytv/BelyashDB/build/CMakeFiles 0
+.PHONY : log4cpp/CMakeFiles/log4cpp.dir/rule
+
+# Convenience name for target.
+log4cpp: log4cpp/CMakeFiles/log4cpp.dir/rule
+
+.PHONY : log4cpp
+
+# clean rule for target.
+log4cpp/CMakeFiles/log4cpp.dir/clean:
+	$(MAKE) -f log4cpp/CMakeFiles/log4cpp.dir/build.make log4cpp/CMakeFiles/log4cpp.dir/clean
+.PHONY : log4cpp/CMakeFiles/log4cpp.dir/clean
+
+# clean rule for target.
+clean: log4cpp/CMakeFiles/log4cpp.dir/clean
 
 .PHONY : clean
 

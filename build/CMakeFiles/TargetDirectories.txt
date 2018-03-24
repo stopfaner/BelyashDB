@@ -1,3 +1,14 @@
+/Users/dlytv/BelyashDB/build/CMakeFiles/install/local.dir
+/Users/dlytv/BelyashDB/build/CMakeFiles/install/strip.dir
+/Users/dlytv/BelyashDB/build/CMakeFiles/install.dir
+/Users/dlytv/BelyashDB/build/CMakeFiles/list_install_components.dir
 /Users/dlytv/BelyashDB/build/CMakeFiles/rebuild_cache.dir
 /Users/dlytv/BelyashDB/build/CMakeFiles/edit_cache.dir
 /Users/dlytv/BelyashDB/build/CMakeFiles/BelyashDB.dir
+/Users/dlytv/BelyashDB/build/log4cpp/CMakeFiles/install/local.dir
+/Users/dlytv/BelyashDB/build/log4cpp/CMakeFiles/rebuild_cache.dir
+/Users/dlytv/BelyashDB/build/log4cpp/CMakeFiles/edit_cache.dir
+/Users/dlytv/BelyashDB/build/log4cpp/CMakeFiles/install/strip.dir
+/Users/dlytv/BelyashDB/build/log4cpp/CMakeFiles/install.dir
+/Users/dlytv/BelyashDB/build/log4cpp/CMakeFiles/list_install_components.dir
+/Users/dlytv/BelyashDB/build/log4cpp/CMakeFiles/log4cpp.dir

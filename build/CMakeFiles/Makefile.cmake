@@ -9,12 +9,15 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/CMakeCInformation.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/CMakeCXXInformation.cmake"
+  "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/CMakeCommonLanguageInclude.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/CMakeGenericSystem.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/CMakeInitializeConfigs.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/CMakeLanguageInformation.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/CMakeSystemSpecificInformation.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/CMakeSystemSpecificInitialize.cmake"
+  "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/CheckCXXCompilerFlag.cmake"
+  "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/CheckCXXSourceCompiles.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/Compiler/AppleClang-C.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/Compiler/AppleClang-CXX.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.11/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
@@ -32,6 +35,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.11.0-rc4/CMakeCCompiler.cmake"
   "CMakeFiles/3.11.0-rc4/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.11.0-rc4/CMakeSystem.cmake"
+  "../log4cpp/CMakeLists.txt"
   )
 
 # The corresponding makefile is:
@@ -43,9 +47,11 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "log4cpp/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/BelyashDB.dir/DependInfo.cmake"
+  "log4cpp/CMakeFiles/log4cpp.dir/DependInfo.cmake"
   )

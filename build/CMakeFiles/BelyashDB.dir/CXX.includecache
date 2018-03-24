@@ -13,10 +13,36 @@ iostream
 -
 stdio.h
 -
+tokenizer.cpp
+/Users/dlytv/BelyashDB/core/cli/tokenizer.cpp
+
+/Users/dlytv/BelyashDB/core/cli/tokenizer.cpp
+stddef.h
+-
+iostream
+-
+stdio.h
+-
+stdlib.h
+-
 
 /Users/dlytv/BelyashDB/main.cpp
 core/cli/input_buffer.cpp
 /Users/dlytv/BelyashDB/core/cli/input_buffer.cpp
+log4cpp/Category.hh
+/Users/dlytv/BelyashDB/log4cpp/Category.hh
+log4cpp/Appender.hh
+/Users/dlytv/BelyashDB/log4cpp/Appender.hh
+log4cpp/FileAppender.hh
+/Users/dlytv/BelyashDB/log4cpp/FileAppender.hh
+log4cpp/OstreamAppender.hh
+/Users/dlytv/BelyashDB/log4cpp/OstreamAppender.hh
+log4cpp/Layout.hh
+/Users/dlytv/BelyashDB/log4cpp/Layout.hh
+log4cpp/BasicLayout.hh
+/Users/dlytv/BelyashDB/log4cpp/BasicLayout.hh
+log4cpp/Priority.hh
+/Users/dlytv/BelyashDB/log4cpp/Priority.hh
 iostream
 -
 

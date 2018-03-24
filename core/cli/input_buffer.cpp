@@ -1,6 +1,7 @@
 #include <stddef.h>
 #include <iostream>
 #include <stdio.h>
+#include "tokenizer.cpp"
 
 class InputBuffer
 {
@@ -8,6 +9,9 @@ class InputBuffer
         char *buffer;
         size_t buffer_length;
         size_t input_length;
+
+        Tokenizer* tokenizer;
+
 
         void print_prompt() {
             std::cout << "belyash > ";
@@ -26,7 +30,10 @@ class InputBuffer
             this->input_length = bytes_read - 1;
             this->buffer[bytes_read - 1] = 0;
 
-            std::cout << this->buffer << std::endl;
+        }
+
+        void tokenize_input(char* input) {
+            this->tokenizer->accept_command(input);
         }
 
     public:
@@ -38,6 +45,9 @@ class InputBuffer
             this->buffer = NULL;
             this->buffer_length = 0;
             this->input_length = 0;
+
+            this->tokenizer = new Tokenizer();
+
         }
 
         void listen() {
@@ -45,6 +55,8 @@ class InputBuffer
                 this->print_prompt();
                 this->read_input_command();
 
+                this->tokenize_input(this->buffer);
+                
             }
         }
 };

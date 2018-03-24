@@ -3,4 +3,5 @@
 
 CMakeFiles/BelyashDB.dir/main.cpp.o
  /Users/dlytv/BelyashDB/core/cli/input_buffer.cpp
+ /Users/dlytv/BelyashDB/core/cli/tokenizer.cpp
  /Users/dlytv/BelyashDB/main.cpp
