@@ -21,6 +21,8 @@ SET(CMAKE_CONFIGURATION_TYPES Debug;Release
     CACHE STRING "Semicolon separated list of supported configuration types"
     FORCE)
 
+include(GoogleTest)
+set(TestArgs --test1 1)
 
 add_subdirectory(log4cpp)
 

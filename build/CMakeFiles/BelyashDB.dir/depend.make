@@ -3,5 +3,6 @@
 
 CMakeFiles/BelyashDB.dir/main.cpp.o: ../core/cli/input_buffer.cpp
 CMakeFiles/BelyashDB.dir/main.cpp.o: ../core/cli/tokenizer.cpp
+CMakeFiles/BelyashDB.dir/main.cpp.o: ../core/utils/logwrapper.h
 CMakeFiles/BelyashDB.dir/main.cpp.o: ../main.cpp
 
