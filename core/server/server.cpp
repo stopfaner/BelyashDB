@@ -10,6 +10,7 @@
 #include <sys/time.h> //FD_SET, FD_ISSET, FD_ZERO macros 
 #include <iostream>
 
+#include "session_manager.h"
 
 #define TRUE   1 
 #define FALSE  0 
@@ -32,7 +33,10 @@ class Server {
         int sd;  
 
         int max_sd;  
-        struct sockaddr_in server_address;  
+        struct sockaddr_in server_address;
+
+        // Session manager define
+        SessionManager* session_manager;  
             
         char buffer[1025];  //data buffer of 1K 
             
@@ -46,7 +50,7 @@ class Server {
 
             server_address.sin_family = AF_INET;  
             server_address.sin_addr.s_addr = INADDR_ANY;  
-            server_address.sin_port = htons( PORT );  
+            server_address.sin_port = htons(PORT);  
         
              //bind the socket to localhost port 8888 
             if (bind(master_socket, (struct sockaddr *) &server_address, sizeof(server_address)) < 0)  
@@ -65,7 +69,9 @@ class Server {
                 
             //accept the incoming connection 
             address_len = sizeof(server_address);  
-            puts("Waiting for connections ...");  
+            puts("Waiting for connections ...");
+
+            session_manager = new SessionManager(this->max_clients);
         }
 
     public:
@@ -138,7 +144,7 @@ class Server {
                 //then its an incoming connection 
                 if (FD_ISSET(master_socket, &readfds))  
                 {  
-                    if ((new_socket = accept(master_socket, (struct sockaddr *) &server_address, (socklen_t*)&address_len))<0) {  
+                    if ((new_socket = accept(master_socket, (struct sockaddr *) &server_address, (socklen_t*)&address_len)) < 0) {  
                         perror("accept");  
                         exit(EXIT_FAILURE);  
                     }  
@@ -152,8 +158,12 @@ class Server {
                     //add new socket to array of sockets 
                     for (int i = 0; i < max_clients; i++) {  
                         //if position is empty 
-                        if( client_socket[i] == 0) {  
+                        if(client_socket[i] == 0) {  
                             client_socket[i] = new_socket;  
+                            printf("session socket %d", sizeof(new_socket));
+                            
+                            this->session_manager->create_new_session(new_socket);
+
                             printf("Adding to list of sockets as %d\n" , i);  
                                 
                             break;  
@@ -165,10 +175,10 @@ class Server {
                 for (int i = 0; i < max_clients; i++) {  
                     sd = client_socket[i];  
                         
-                    if (FD_ISSET( sd , &readfds)) {  
+                    if (FD_ISSET(sd , &readfds)) {  
                         //Check if it was for closing , and also read the 
                         //incoming message 
-                        if ((valread = read( sd , buffer, 1024)) == 0) {  
+                        if ((valread = read(sd , buffer, 1024)) == 0) {  
                             //Somebody disconnected , get his details and print 
                             getpeername(sd , (struct sockaddr*)&server_address , \
                                 (socklen_t*)&address_len);  
@@ -181,7 +191,7 @@ class Server {
                         } else {  
                             //set the string terminating NULL byte on the end 
                             //of the data read 
-                            buffer[valread] = '\0';  
+                            buffer[valread] = '\0';
                             send(sd , buffer , strlen(buffer) , 0 );  
                         }  
                     }  

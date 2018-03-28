@@ -21,11 +21,17 @@ SET(CMAKE_CONFIGURATION_TYPES Debug;Release
     CACHE STRING "Semicolon separated list of supported configuration types"
     FORCE)
 
-include(GoogleTest)
-set(TestArgs --test1 1)
+# include(GoogleTest)
+# set(TestArgs --test1 1)
 
-add_subdirectory(log4cpp)
+include_directories(core)
 
-add_executable(BelyashDB main.cpp)
+# add_subdirectory(log4cpp)
+set(
+    SOURCE
+    core/server/session_manager.h
+    core/server/session_manager.cpp
+)
+add_executable(${PROJECT_NAME} main.cpp ${SOURCE})
 
-target_link_libraries(BelyashDB log4cpp)
+# target_link_libraries(BelyashDB log4cpp)
