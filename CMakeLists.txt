@@ -31,6 +31,8 @@ set(
     SOURCE
     core/server/session_manager.h
     core/server/session_manager.cpp
+    core/server/uuid4.h
+    core/server/uuid4.cpp
 )
 add_executable(${PROJECT_NAME} main.cpp ${SOURCE})
 

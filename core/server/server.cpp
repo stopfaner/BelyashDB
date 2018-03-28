@@ -161,7 +161,7 @@ class Server {
                         if(client_socket[i] == 0) {  
                             client_socket[i] = new_socket;  
                             printf("session socket %d", sizeof(new_socket));
-                            
+
                             this->session_manager->create_new_session(new_socket);
 
                             printf("Adding to list of sockets as %d\n" , i);  
@@ -186,13 +186,13 @@ class Server {
                                 inet_ntoa(server_address.sin_addr) , ntohs(server_address.sin_port));  
                                 
                             //Close the socket and mark as 0 in list for reuse 
-                            close( sd );  
+                            this->session_manager->remove_session(sd);
                             client_socket[i] = 0;  
                         } else {  
                             //set the string terminating NULL byte on the end 
                             //of the data read 
-                            buffer[valread] = '\0';
-                            send(sd , buffer , strlen(buffer) , 0 );  
+                            this->session_manager->push_in_session(buffer, sd, valread);
+                            // send(sd , buffer , strlen(buffer) , 0 );  
                         }  
                     }  
                 }  
