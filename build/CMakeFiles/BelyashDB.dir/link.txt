@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++   -std=c++11 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/BelyashDB.dir/main.cpp.o  -o BelyashDB log4cpp/liblog4cpp.a 

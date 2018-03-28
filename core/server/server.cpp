@@ -14,6 +14,9 @@
 #define TRUE   1 
 #define FALSE  0 
 #define PORT 8888 
+#define MAX_CLIENTS_DEFAULT 30
+#define MAX_CLIENTS 100
+
 class Server {
     
     private:
@@ -22,8 +25,8 @@ class Server {
         int master_socket;
         int address_len;
         int new_socket;
-        int client_socket[30];
-        int max_clients = 30;
+        int *client_socket;
+        int max_clients;
         int activity;
         int valread;
         int sd;  
@@ -65,30 +68,18 @@ class Server {
             puts("Waiting for connections ...");  
         }
 
-        void error(const char *msg)
-        {
-            perror(msg);
-            exit(1);
-        }
-
-        void dostuff (int sock)
-        {
-            int n;
-            char buffer[256];
-                
-            bzero(buffer,256);
-            while (n = read(sock,buffer,255)) {
-                if (n < 0) error("ERROR reading from socket");
-                printf("Here is the message: %s\n",buffer);
-                n = write(sock, "I got your message", 18);
-                if (n < 0) error("ERROR writing to socket");
-
-            }
-        }
-
     public:
 
-        Server() {
+        Server(int max_clients = 0) {
+            
+            if (max_clients != 0) {
+                this->max_clients = max_clients;
+                
+            } else {
+                this->max_clients = MAX_CLIENTS_DEFAULT;
+            }
+            this->client_socket = new int[this->max_clients];
+
             //initialise all client_socket[] to 0 so not checked 
             for (int i = 0; i < max_clients; i++) {  
                 client_socket[i] = 0;  
