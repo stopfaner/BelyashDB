@@ -8,30 +8,31 @@
 #include <arpa/inet.h> 
 #include <sys/socket.h> 
 
-class Session {
+namespace server {
+
+    class Session {
 
     private:
 
-        // UUID4 session_uuid;
+        UUID4 session_uuid;
         int session_socket;
 
         char buffer[1025]; 
     
     public:
 
-        Session(UUID4 session_id, int session_socket) {
-            // this->session_uuid = UUID4(session_id);
-            this->session_socket = session_socket;
-        }
+        Session(UUID4 session_uuid, int session_socket);
+        Session(const Session &other_session);
 
-        void accept(char *data, int valread) {
-            strcpy(buffer, data);
-            buffer[valread] = '\0';
-            printf(buffer);
-            send(session_socket, buffer, strlen(buffer), 0); 
-        }
+        static Session* open_session(int session_socket);
 
-        void close_session(int session_socket) {
-            close(session_socket);
-        }
-};
+        void accept_request(char *data, int valread);
+        void close_session(int session_socket);
+
+        void set_session_socket(int session_socket);
+        void ses_session_uuid(UUID4 session_uuid);
+
+        int get_session_socket() const;
+        UUID4 get_session_uuid() const;
+    };
+}

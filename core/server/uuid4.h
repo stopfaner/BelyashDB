@@ -18,4 +18,5 @@ class UUID4 {
 
         bool operator<(const UUID4 &other);
         bool operator==(const UUID4 &other);
+
 };

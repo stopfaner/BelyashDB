@@ -24,15 +24,19 @@ SET(CMAKE_CONFIGURATION_TYPES Debug;Release
 # include(GoogleTest)
 # set(TestArgs --test1 1)
 
-include_directories(core)
+# include_directories(core)
+add_subdirectory(core)
 
 # add_subdirectory(log4cpp)
 set(
     SOURCE
     core/server/session_manager.h
     core/server/session_manager.cpp
+    core/server/session.h
+    core/server/session.cpp
     core/server/uuid4.h
     core/server/uuid4.cpp
+    # ${CORE_SOURCE}
 )
 add_executable(${PROJECT_NAME} main.cpp ${SOURCE})
 

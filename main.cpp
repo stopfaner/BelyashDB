@@ -14,7 +14,7 @@
 int main(int argc , char *argv[])  
 {  
 
-     Server* server = new Server(10);
+     server::Server* server = new server::Server(10);
      server->start_accepting();
 
 	return 0;
