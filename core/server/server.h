@@ -53,6 +53,7 @@ namespace server {
 
             bool _set_up_socket();
 
+            void _incomming_connection();
             void _io_accept();
 
         public:

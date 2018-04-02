@@ -6,6 +6,8 @@ include(CheckCXXCompilerFlag)
 enable_language(C)
 enable_language(CXX)
 
+include_directories(/usr/local/include ${LUA_INCLUDE_DIR})
+
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
 CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
 
@@ -21,6 +23,10 @@ SET(CMAKE_CONFIGURATION_TYPES Debug;Release
     CACHE STRING "Semicolon separated list of supported configuration types"
     FORCE)
 
+set(Boost_USE_STATIC_LIBS OFF) 
+set(Boost_USE_MULTITHREADED ON)  
+set(Boost_USE_STATIC_RUNTIME OFF) 
+find_package(Boost 1.66.0 COMPONENTS regex serialization) 
 # include(GoogleTest)
 # set(TestArgs --test1 1)
 
@@ -36,8 +42,22 @@ set(
     core/server/session.cpp
     core/server/uuid4.h
     core/server/uuid4.cpp
+    core/storage/collection_manager.h
+    core/storage/collection_manager.cpp
+    core/storage/collection_metadata.h
+    core/storage/collection_metadata.cpp
+    core/utils/file_manager.h
+    core/utils/file_manager.cpp
     # ${CORE_SOURCE}
 )
-add_executable(${PROJECT_NAME} main.cpp ${SOURCE})
+
+if(Boost_FOUND) 
+    include_directories(${Boost_INCLUDE_DIRS})
+
+    add_executable(${PROJECT_NAME} main.cpp ${SOURCE})
+
+    target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
+
+endif() 
 
 # target_link_libraries(BelyashDB log4cpp)

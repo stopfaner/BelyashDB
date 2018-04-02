@@ -28,3 +28,11 @@ bool UUID4::operator<(const UUID4 &other) {
 bool UUID4::operator==(const UUID4 &other) {
     return uuid_compare(uuid, other.uuid) == 0; 
 }
+
+char* UUID4::operator()() {
+    char *parsed_uuid = new char[37];
+
+    uuid_unparse_lower(this->uuid, parsed_uuid);
+
+    return parsed_uuid;
+}

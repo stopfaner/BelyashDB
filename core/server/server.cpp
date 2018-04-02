@@ -97,37 +97,41 @@ void server::Server::start_accepting() {
             
         //If something happened on the master socket , 
         //then its an incoming connection 
-        if (FD_ISSET(master_socket, &readfds))  
-        {  
-            if ((new_socket = accept(master_socket, (struct sockaddr *) &server_address, (socklen_t*)&address_len)) < 0) {  
-                perror("accept");  
-                exit(EXIT_FAILURE);  
-            }  
-            
-            //inform user of socket number - used in send and receive commands 
-            printf("New connection , socket fd is %d , ip is : %s , port : %d \n" , new_socket , inet_ntoa(server_address.sin_addr) , ntohs
-                (server_address.sin_port));  
-        
-            puts("Welcome message sent successfully");  
-                
-            //add new socket to array of sockets 
-            for (int i = 0; i < max_clients; i++) {  
-                //if position is empty 
-                if(client_socket[i] == 0) {  
-                    client_socket[i] = new_socket;  
-                    printf("session socket %d", sizeof(new_socket));
-
-                    this->session_manager->create_new_session(new_socket);
-
-                    printf("Adding to list of sockets as %d\n" , i);  
-                        
-                    break;  
-                }  
-            }  
-        }  
+        this->_incomming_connection();  
             
         this->_io_accept();
     }  
+}
+
+void server::Server::_incomming_connection() {
+    if (FD_ISSET(master_socket, &readfds))  
+    {  
+        if ((new_socket = accept(master_socket, (struct sockaddr *) &server_address, (socklen_t*)&address_len)) < 0) {  
+            perror("accept");  
+            exit(EXIT_FAILURE);  
+        }  
+        
+        //inform user of socket number - used in send and receive commands 
+        printf("New connection , socket fd is %d , ip is : %s , port : %d \n" , new_socket , inet_ntoa(server_address.sin_addr) , ntohs
+            (server_address.sin_port));  
+    
+        puts("Welcome message sent successfully");  
+            
+        //add new socket to array of sockets 
+        for (int i = 0; i < max_clients; i++) {  
+            //if position is empty 
+            if(client_socket[i] == 0) {  
+                client_socket[i] = new_socket;  
+                printf("session socket %d", sizeof(new_socket));
+
+                this->session_manager->create_new_session(new_socket);
+
+                printf("Adding to list of sockets as %d\n" , i);  
+                    
+                break;  
+            }  
+        }  
+    }
 }
 
 void server::Server::_io_accept() {
@@ -152,7 +156,6 @@ void server::Server::_io_accept() {
                 //set the string terminating NULL byte on the end 
                 //of the data read 
                 this->session_manager->push_in_session(buffer, sd, valread);
-                // send(sd , buffer , strlen(buffer) , 0 );  
             }  
         }  
     }  
