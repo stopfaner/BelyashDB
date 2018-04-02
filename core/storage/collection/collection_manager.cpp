@@ -3,6 +3,8 @@
 storage::CollectionManager::CollectionManager() {
     this->collections_metadata = new std::map<std::string, CollectionMetadata>();
     this->metadata_manager = new FileManager<CollectionMetadata>("collection.meta");
+    
+    logger = Logger::getLogger();
 
     this->_load_collections_metadata();
 }
@@ -11,9 +13,9 @@ void storage::CollectionManager::_load_collections_metadata() {
     std::vector<CollectionMetadata> *vector = this->metadata_manager->read_all_data();
 
     if (vector->size() != 0) {
-        std::cout << "Collections metadata was successfully loaded." << std::endl;
+        logger->info("Collections metadata was successfully loaded.");
     } else {
-        std::cout << "Collections metadata file is empty" << std::endl;
+        logger->warn("Collections metadata file is empty.");
     }
 
     for (const CollectionMetadata &metadata: *vector) {
@@ -38,7 +40,7 @@ response::Collection storage::CollectionManager::create_collection(char *collect
 
         return response::COLLECTION_CREATED;
     } else {
-        std::cout << "Such collection already exists." << std::endl;
+        logger->warn("Such collection already exists.");
 
         return response::COLLECTION_EXISTS;
     }

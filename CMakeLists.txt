@@ -35,23 +35,48 @@ add_subdirectory(core)
 
 add_subdirectory(log4cpp)
 
-set(
-    SOURCE
+set (
+    SERVER_SOURCE
     core/server/session_manager.h
     core/server/session_manager.cpp
     core/server/session.h
     core/server/session.cpp
-    core/server/uuid4.h
-    core/server/uuid4.cpp
-    core/storage/collection_manager.h
-    core/storage/collection_manager.cpp
-    core/storage/collection_metadata.h
-    core/storage/collection_metadata.cpp
+    
+)
+
+set (
+    STORAGE_SOURCE
+    core/storage/collection/collection_manager.h
+    core/storage/collection/collection_manager.cpp
+    core/storage/collection/collection_metadata.h
+    core/storage/collection/collection_metadata.cpp
+    core/storage/collection/collection.h
+    core/storage/collection/collection.cpp
+
+    core/storage/metric/metric_metadata.h
+    core/storage/metric/metric_metadata.cpp
+    core/storage/metric/metric.h
+    core/storage/metric/metric.cpp
+    core/storage/metric/tag.h
+    core/storage/metric/tag.cpp
+
+    core/storage/response.h
+)
+
+
+
+set(
+    SOURCE
+
+    ${SERVER_SOURCE}
+    ${STORAGE_SOURCE}
+
     core/utils/file_manager.h
     core/utils/file_manager.cpp
-    core/storage/response.h
     core/utils/logwrapper.h
     core/utils/logwrapper.cpp
+    core/utils/uuid4.h
+    core/utils/uuid4.cpp
     # ${CORE_SOURCE}
 )
 

@@ -4,8 +4,10 @@
 #include <boost/archive/binary_iarchive.hpp>
 #include <cstring> 
 #include <iostream>
-#include "../utils/logwrapper.h"
+#include "../../utils/logwrapper.h"
 
+#define MAX_COLLECTION_NAME_SIZE 32
+#define MAX_FILENAME_SIZE 40
 
 namespace storage {
 
@@ -14,9 +16,10 @@ namespace storage {
         private:
             friend class boost::serialization::access;
             
-            char collection_name[32];
-
-            char filename[40];
+            // Name of collection with MAX_SIZE 32
+            char            collection_name[MAX_COLLECTION_NAME_SIZE];
+            // Filename of collection is uuid4 hash in str
+            char            filename[MAX_FILENAME_SIZE];
 
             template<class Archive>
             void serialize(Archive & ar, const unsigned int version) {

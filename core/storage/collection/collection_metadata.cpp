@@ -12,7 +12,7 @@ storage::CollectionMetadata::CollectionMetadata(char *collection_name, char *fil
 }
 
 char* storage::CollectionMetadata::get_collection_name() const {
-    char *collection_name = new char[32];
+    char *collection_name = new char[sizeof(this->collection_name) + 1];
 
     strcpy(collection_name, this->collection_name);
 
