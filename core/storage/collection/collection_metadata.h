@@ -17,9 +17,9 @@ namespace storage {
             friend class boost::serialization::access;
             
             // Name of collection with MAX_SIZE 32
-            char            collection_name[MAX_COLLECTION_NAME_SIZE];
-            // Filename of collection is uuid4 hash in str
-            char            filename[MAX_FILENAME_SIZE];
+            char                collection_name[MAX_COLLECTION_NAME_SIZE];
+            // Filename of c    ollection is uuid4 hash in str
+            char                filename[MAX_FILENAME_SIZE];
 
             template<class Archive>
             void serialize(Archive & ar, const unsigned int version) {
@@ -30,15 +30,15 @@ namespace storage {
         public:
 
             // Default filename of colllections metadata 
-            const static char *DEFAULT_FILENAME;
+            const static char   *DEFAULT_FILENAME;
 
             CollectionMetadata();
 
             CollectionMetadata(char *collection_name, char *file_name);
 
-            char* get_collection_name() const;
-
-            char* get_filename() const;
+            // Getters
+            char*               get_collection_name() const;
+            char*               get_filename() const;
     };
 
 }

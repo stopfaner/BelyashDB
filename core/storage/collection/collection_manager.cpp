@@ -10,15 +10,16 @@ storage::CollectionManager::CollectionManager() {
 }
 
 void storage::CollectionManager::_load_collections_metadata() {
-    std::vector<CollectionMetadata> *vector = this->metadata_manager->read_all_data();
+    std::vector<CollectionMetadata> vector;
+    bool is_success = this->metadata_manager->read_all_data(vector);
 
-    if (vector->size() != 0) {
+    if (is_success) {
         logger->info("Collections metadata was successfully loaded.");
     } else {
         logger->warn("Collections metadata file is empty.");
     }
 
-    for (const CollectionMetadata &metadata: *vector) {
+    for (const CollectionMetadata &metadata: vector) {
         this->collections_metadata->insert(std::make_pair(metadata.get_collection_name(), metadata));
     }
 }
