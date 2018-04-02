@@ -4,32 +4,39 @@
 #include <boost/archive/binary_iarchive.hpp>
 #include <cstring> 
 #include <iostream>
+#include "../utils/logwrapper.h"
 
-class CollectionMetadata {
 
-    private:
-        friend class boost::serialization::access;
-        
-        char collection_name[32];
+namespace storage {
 
-        char filename[40];
+    class CollectionMetadata {
 
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int version) {
-            ar & collection_name;
-            ar & filename;
-        }
+        private:
+            friend class boost::serialization::access;
+            
+            char collection_name[32];
 
-    public:
+            char filename[40];
 
-        // Default filename of colllections metadata 
-        const static char *DEFAULT_FILENAME;
+            template<class Archive>
+            void serialize(Archive & ar, const unsigned int version) {
+                ar & collection_name;
+                ar & filename;
+            }
 
-        CollectionMetadata();
+        public:
 
-        CollectionMetadata(char *collection_name, char *file_name);
+            // Default filename of colllections metadata 
+            const static char *DEFAULT_FILENAME;
 
-        char* get_collection_name() const;
+            CollectionMetadata();
 
-        char* get_filename() const;
-};
+            CollectionMetadata(char *collection_name, char *file_name);
+
+            char* get_collection_name() const;
+
+            char* get_filename() const;
+    };
+
+}
+

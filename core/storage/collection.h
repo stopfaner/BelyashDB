@@ -1,5 +1,6 @@
 #pragma once
 #include "uuid4.h"
+#include "../utils/logwrapper.h"
 
 namespace collection {
     

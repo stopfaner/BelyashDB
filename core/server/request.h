@@ -1,6 +1,7 @@
 #pragma once
 
 #define MAX_REQUEST_LENGTH 1024
+#include "../utils/logwrapper.h"
 
 class Request {
 

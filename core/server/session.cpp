@@ -3,11 +3,23 @@
 server::Session::Session(UUID4 session_uuid, int session_socket) {
     this->session_uuid = UUID4(session_uuid);
     this->session_socket = session_socket;
+
+    logger = Logger::getLogger();
+
+    logger->info("Setting up session");
 }
 
 server::Session::Session(const Session &other_session) {
     this->session_uuid = other_session.get_session_uuid();
     this->session_socket = other_session.get_session_socket();
+    
+    logger = Logger::getLogger();
+
+    logger->info("Setting up session");
+}
+
+server::Session::~Session() {
+    // Destruct here
 }
 
 server::Session* server::Session::open_session(int session_socket) {
@@ -17,7 +29,7 @@ server::Session* server::Session::open_session(int session_socket) {
     Session *session = new Session(session_uuid, session_socket);
 
     if (session == 0) {
-        printf("Cannot create new session.");
+
         return NULL;
     }
 

@@ -12,6 +12,7 @@
 #include <netinet/in.h> 
 #include <sys/time.h> //FD_SET, FD_ISSET, FD_ZERO macros 
 #include <iostream>
+#include "../utils/logwrapper.h"
 
 #include "session_manager.h"
 
@@ -27,18 +28,18 @@ namespace server {
         
         private:
 
-            int opt = TRUE;  
-            int master_socket;
-            int address_len;
-            int new_socket;
-            int *client_socket;
-            int max_clients;
-            int activity;
-            int valread;
-            int sd;  
+            int                     opt = TRUE;  
+            int                     master_socket;
+            int                     address_len;
+            int                     new_socket;
+            int                     *client_socket;
+            int                     max_clients;
+            int                     activity;
+            int                     valread;
+            int                     sd;  
 
-            int max_sd;  
-            struct sockaddr_in server_address;
+            int                     max_sd;  
+            struct sockaddr_in      server_address;
 
             // Session manager define
             SessionManager* session_manager;  

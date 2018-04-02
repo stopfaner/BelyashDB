@@ -33,7 +33,8 @@ find_package(Boost 1.66.0 COMPONENTS regex serialization)
 # include_directories(core)
 add_subdirectory(core)
 
-# add_subdirectory(log4cpp)
+add_subdirectory(log4cpp)
+
 set(
     SOURCE
     core/server/session_manager.h
@@ -48,6 +49,9 @@ set(
     core/storage/collection_metadata.cpp
     core/utils/file_manager.h
     core/utils/file_manager.cpp
+    core/storage/response.h
+    core/utils/logwrapper.h
+    core/utils/logwrapper.cpp
     # ${CORE_SOURCE}
 )
 
@@ -56,8 +60,6 @@ if(Boost_FOUND)
 
     add_executable(${PROJECT_NAME} main.cpp ${SOURCE})
 
-    target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
+    target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} log4cpp)
 
 endif() 
-
-# target_link_libraries(BelyashDB log4cpp)

@@ -11,11 +11,7 @@ server::SessionManager::~SessionManager() {
 server::Session* server::SessionManager::generate_session(int session_socket) {
     // generating session UUID
     UUID4 session_uuid = UUID4::generate();
-    printf("session id");
-    // char uuid_str[37];      // ex. "1b4e28ba-2fa1-11d2-883f-0016d3cca427" + "\0"
-    // uuid_unparse_lower(session_uuid.uuid, uuid_str);
-    // printf("generate uuid=%s\n", uuid_str);
-    // printf(session_uuid.uuid);
+    
     server::Session *session = server::Session::open_session(session_socket);
 
     if (session != 0) {
