@@ -1,7 +1,7 @@
-
+#pragma once
 namespace response {
 
-    enum Collection {
+    enum CollectionResponse {
         COLLECTION_CREATED,
         COLLECTION_EXISTS
     };

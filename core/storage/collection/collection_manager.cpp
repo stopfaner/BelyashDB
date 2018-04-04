@@ -6,8 +6,21 @@ storage::CollectionManager::CollectionManager() {
     
     logger = Logger::getLogger();
 
+    // metric_manager = MetricManager::get_manager();
+
     this->_load_collections_metadata();
 }
+
+storage::CollectionManager* storage::CollectionManager::get_manager() {
+
+    if (manager == 0) {
+        manager = new CollectionManager();
+    }
+
+    return manager;
+}
+
+storage::CollectionManager* storage::CollectionManager::manager = nullptr;
 
 void storage::CollectionManager::_load_collections_metadata() {
     std::vector<CollectionMetadata> vector;
@@ -20,11 +33,12 @@ void storage::CollectionManager::_load_collections_metadata() {
     }
 
     for (const CollectionMetadata &metadata: vector) {
+        std::cout << "name: " << metadata.get_collection_name() << " uuid: " << metadata.get_filename() << std::endl;
         this->collections_metadata->insert(std::make_pair(metadata.get_collection_name(), metadata));
     }
 }
 
-response::Collection storage::CollectionManager::create_collection(char *collection_name) {
+response::CollectionResponse storage::CollectionManager::create_collection(char *collection_name) {
                 
     // Check if such exists in map already
     if (collections_metadata->find(collection_name) == collections_metadata->end()) {
@@ -43,6 +57,12 @@ response::Collection storage::CollectionManager::create_collection(char *collect
     } else {
         logger->warn("Such collection already exists.");
 
-        return response::COLLECTION_EXISTS;
+        return response::CollectionResponse(response::COLLECTION_EXISTS);
     }
 }
+
+// storage::Collection* storage::CollectionManager::get_collection(std::string collection_name) {
+
+//     Collection *collection = new Collection();
+
+// }

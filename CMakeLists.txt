@@ -31,7 +31,6 @@ find_package(Boost 1.66.0 COMPONENTS regex serialization)
 # set(TestArgs --test1 1)
 
 # include_directories(core)
-add_subdirectory(core)
 
 add_subdirectory(log4cpp)
 
@@ -41,11 +40,13 @@ set (
     core/server/session_manager.cpp
     core/server/session.h
     core/server/session.cpp
-    
 )
 
 set (
     STORAGE_SOURCE
+    core/storage/storage_manager.h
+    core/storage/storage_manager.cpp
+
     core/storage/collection/collection_manager.h
     core/storage/collection/collection_manager.cpp
     core/storage/collection/collection_metadata.h
@@ -53,12 +54,19 @@ set (
     core/storage/collection/collection.h
     core/storage/collection/collection.cpp
 
+    core/storage/metric/metric_manager.h
+    core/storage/metric/metric_manager.cpp
     core/storage/metric/metric_metadata.h
     core/storage/metric/metric_metadata.cpp
     core/storage/metric/metric.h
     core/storage/metric/metric.cpp
     core/storage/metric/tag.h
     core/storage/metric/tag.cpp
+
+    core/storage/metric/datatype/datatype.h
+    core/storage/metric/datatype/int_metric.h
+    core/storage/metric/datatype/decimal_metric.h
+    core/storage/metric/datatype/percentage_metric.h
 
     core/storage/response.h
 )

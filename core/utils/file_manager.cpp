@@ -57,3 +57,4 @@ bool FileManager<T>::read_all_data(std::vector<T> &data) {
 }
 
 template class FileManager<storage::CollectionMetadata>;
+template class FileManager<storage::MetricMetadata>;

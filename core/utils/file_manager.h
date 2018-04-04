@@ -3,6 +3,7 @@
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 #include "../storage/collection/collection_metadata.h"
+#include "../storage/metric/metric_metadata.h"
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -14,7 +15,7 @@ class FileManager {
 
     private:
 
-        char *filename;
+        std::string filename;
 
         std::ofstream *ofs = new std::ofstream();
 
@@ -26,9 +27,9 @@ class FileManager {
         }
 
     public:
-        FileManager(const char *filename){
-            this->filename = new char(sizeof(filename));
-            strcpy(this->filename, filename);
+        FileManager(const std::string &filename): filename(filename) {
+            this->ofs = new std::ofstream();
+            this->ifs = new std::ifstream();
         }
 
         void wtire_data(T &data); 
