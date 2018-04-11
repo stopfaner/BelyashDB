@@ -8,10 +8,10 @@ storage::MetricManager::~MetricManager() {
     
 }
 
-storage::MetricManager* storage::MetricManager::get_manager()  {
+std::shared_ptr<storage::MetricManager> storage::MetricManager::get_manager()  {
 
-    if (manager == 0) {
-        manager = new MetricManager();
+    if (manager.get() == 0) {
+        manager = std::make_shared<MetricManager>();
     }
 
     return manager;
@@ -25,4 +25,8 @@ bool storage::MetricManager::delete_metric(const UUID4 &collection_uuid, std::st
     std::cout << "Deleting metric logic here" << std::endl;
 }
 
-storage::MetricManager* storage::MetricManager::manager = nullptr;
+bool storage::MetricManager::load_metrics(std::string collection_name, std::vector<std::shared_ptr<Metric<DataType>>> &metrics) {
+    
+}
+
+std::shared_ptr<storage::MetricManager> storage::MetricManager::manager = nullptr;

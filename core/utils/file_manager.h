@@ -9,6 +9,7 @@
 #include <iterator>
 #include <vector>
 #include <string.h>
+#include <memory>
 
 template <class T>
 class FileManager {
@@ -17,9 +18,9 @@ class FileManager {
 
         std::string filename;
 
-        std::ofstream *ofs = new std::ofstream();
+        std::ofstream *ofs;
 
-        std::ifstream *ifs = new std::ifstream();
+        std::ifstream *ifs;
 
         void _write_data(T &data, std::ofstream *ofs) {
             boost::archive::binary_oarchive oa(*ofs);
@@ -32,7 +33,7 @@ class FileManager {
             this->ifs = new std::ifstream();
         }
 
-        void wtire_data(T &data); 
+        void write_data(T &data);
 
         T* read_data();
 

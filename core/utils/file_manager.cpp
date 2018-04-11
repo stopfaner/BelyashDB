@@ -4,7 +4,7 @@
 // FileManager<T>::FileManager(const char *filename)
 
 template <class T>
-void FileManager<T>::wtire_data(T &data) {
+void FileManager<T>::write_data(T &data) {
     if (ofs->is_open()) {
         this->_write_data(data, ofs);
 
@@ -25,6 +25,7 @@ T* FileManager<T>::read_data() {
         ia >> *data;
 
         ifs->close();
+        
     } else {
         ifs->open(this->filename, std::ios::binary);
 

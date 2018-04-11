@@ -7,13 +7,18 @@
 class IntegerMetric: public DataType { 
     
     private:
-
-        int32_t data;
+        
+        int64_t data;
 
     public:
 
-        IntegerMetric(int32_t data) {
+        IntegerMetric(int64_t data) {
             this->data = data;
+        }
+
+        IntegerMetric(const IntegerMetric &metric) {
+            this->timestamp = metric.get_timestamp();
+            this->data = metric.get_data();
         }
 
         std::string operator()() const{
@@ -24,8 +29,12 @@ class IntegerMetric: public DataType {
             return s;
         }
 
-        int32_t get_data() const{
+        int64_t get_data() const{
             return this->data;
+        }
+
+        void set_data(int64_t data) {
+            this->data = data;
         }
 
 };

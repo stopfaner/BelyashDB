@@ -19,25 +19,36 @@ namespace storage {
             // Logger instance 
             Logger                                      *logger;
 
-            static CollectionManager                    *manager;
+            static std::shared_ptr<CollectionManager>   manager;
 
             std::map<std::string, CollectionMetadata>   *collections_metadata;
 
             FileManager<CollectionMetadata>             *metadata_manager;
-            
-            std::vector<std::shared_ptr<Collection>>    collections;
+
+            std::shared_ptr<std::map<std::string, Collection>> collections;
 
             // Loading collections metadata from storage file
             void                                        _load_collections_metadata();
+            void                                        _load_collections_map();
 
-            CollectionManager();
+
+        protected:
+
+            CollectionManager(const CollectionManager &) = delete;
+            const CollectionManager &operator=(const CollectionManager &) = delete;
+
 
         public:
 
-            static CollectionManager* get_manager();
+            explicit CollectionManager();
+
+            static std::shared_ptr<CollectionManager> get_manager();
+
+            std::shared_ptr<std::map<std::string, Collection>> get_collections() const;
+
+            std::shared_ptr<Collection> get_collection(std::string name) const;
 
             // Creating new collection
-            response::CollectionResponse                        create_collection(char *collection_name);
-            // storage::Collection*                        get_collection(std::string collection_name);
+            bool                        create_collection(char *collection_name);
     };
 }
