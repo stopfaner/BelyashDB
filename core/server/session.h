@@ -7,7 +7,10 @@
 #include "../utils/uuid4.h"
 #include <arpa/inet.h> 
 #include <sys/socket.h> 
+#include <memory>
 #include "../utils/logwrapper.h"
+#include "../parse/input_parser.h"
+
 
 namespace server {
 
@@ -22,7 +25,11 @@ namespace server {
         // Session socket number
         int                     session_socket;
         // Session buffer of request
-        char                    buffer[1025]; 
+        char                    buffer[1025];
+
+        InputParser             *input_parser;       
+
+        void init_loader(); 
     
     public:
 

@@ -35,7 +35,7 @@ namespace storage {
             MetricMetadata(char *metric_name, char *filename, char *tag_name=0);
 
             // Overloading of == operator for further metric comparing
-            bool        operator==(const MetricMetadata &other);
+            bool        operator==(const MetricMetadata &other) const;
 
             // Getters 
             char*       get_metric_name() const;

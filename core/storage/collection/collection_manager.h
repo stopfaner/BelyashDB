@@ -30,6 +30,8 @@ namespace storage {
             // Loading collections metadata from storage file
             void                                        _load_collections_metadata();
             void                                        _load_collections_map();
+            std::shared_ptr<CollectionMetadata>         _find_collection_metadata(std::string collection_name);
+            std::shared_ptr<Collection>                 _find_collection(std::string collection_name);
 
 
         protected:
@@ -50,5 +52,6 @@ namespace storage {
 
             // Creating new collection
             bool                        create_collection(char *collection_name);
+            bool                        delete_collection(std::string collection_name);
     };
 }

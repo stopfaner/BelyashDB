@@ -33,12 +33,15 @@ namespace storage {
             const static char   *DEFAULT_FILENAME;
 
             CollectionMetadata();
+            CollectionMetadata(const CollectionMetadata &metadata);
 
             CollectionMetadata(char *collection_name, char *file_name);
 
             // Getters
             char*               get_collection_name() const;
             char*               get_filename() const;
+
+            bool                operator==(const CollectionMetadata &metadata) const;
     };
 
 }

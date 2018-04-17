@@ -22,7 +22,7 @@ class FileManager {
 
         std::ifstream *ifs;
 
-        void _write_data(T &data, std::ofstream *ofs) {
+        void _write_data(const T &data, std::ofstream *ofs) {
             boost::archive::binary_oarchive oa(*ofs);
             oa << data; 
         }
@@ -33,10 +33,8 @@ class FileManager {
             this->ifs = new std::ifstream();
         }
 
-        void write_data(T &data);
-
-        T* read_data();
-
-        bool read_all_data(std::vector<T> &data);
-
+        void                    write_data(const T &data);
+        T*                      read_data();
+        bool                    read_all_data(std::vector<T> &data);
+        bool                    delete_data(const T &data);
 };

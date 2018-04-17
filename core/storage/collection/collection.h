@@ -26,8 +26,6 @@ namespace storage {
 
             std::shared_ptr<std::map<std::string, Metric<DataType>>> metrics;
 
-            // std::shared_ptr<MetricManager>   metric_manager;
-
             std::shared_ptr<FileManager<MetricMetadata>> file_manager;
 
             bool _load_metrics_metadata();
@@ -48,15 +46,17 @@ namespace storage {
             std::string get_name() const;
             std::string get_uuid() const;
 
-            std::map<std::string, Metric<DataType>> get_metrics() const;
+            std::map<std::string, Metric<DataType>>             get_metrics() const;
 
-            std::map<std::string, Metric<DataType>> get_metric(std::string name) const;
+            std::map<std::string, Metric<DataType>>             get_metric(std::string name) const;
 
             // For creating metric in collection
             template <class T>
-            std::shared_ptr<Metric<T>> create_metric(std::string name, std::string tag_name = "");
+            std::shared_ptr<Metric<T>>                          create_metric(std::string name, std::string tag_name = "");
 
-            bool delete_metric(std::string name, std::string tag_name);
+            bool                                                delete_metric(std::string name, std::string tag_name);
+
+            bool                                                autoremove();
 
             // Metric<DataType>* get_metric(std::string name, std::string tag_name);
 

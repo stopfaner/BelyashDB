@@ -13,7 +13,7 @@ storage::MetricMetadata::MetricMetadata(char *metric_name, char *filename, char 
     }
 }
 
-bool storage::MetricMetadata::operator==(const MetricMetadata &other) {
+bool storage::MetricMetadata::operator==(const MetricMetadata &other) const {
     if (strcmp(this->metric_name, other.get_metric_name()) != 0) {
         return false;
     }

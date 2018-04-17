@@ -108,6 +108,10 @@ bool storage::Collection::delete_metric(std::string name, std::string tag_name) 
     return false;
 }
 
+// For whole collection deleting
+bool storage::Collection::autoremove() {
+    
+}
 // Metric<DataType>* storage::Collection::get_metric(std::string name, std::string tag_name) {
     
 // }

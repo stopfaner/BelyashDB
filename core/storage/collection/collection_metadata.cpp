@@ -6,6 +6,11 @@ storage::CollectionMetadata::CollectionMetadata() {
 
 }
 
+storage::CollectionMetadata::CollectionMetadata(const CollectionMetadata &metadata) {
+    strcpy(this->collection_name, metadata.get_collection_name());
+    strcpy(this->filename, metadata.get_filename());
+}
+
 storage::CollectionMetadata::CollectionMetadata(char *collection_name, char *file_name) {
     strcpy(this->collection_name, collection_name);
     strcpy(this->filename, file_name);
@@ -25,4 +30,17 @@ char* storage::CollectionMetadata::get_filename() const {
     strcpy(filename, this->filename);
 
     return filename;
+}
+
+bool storage::CollectionMetadata::operator==(const CollectionMetadata &metadata) const{
+    
+    if (std::strcmp(this->collection_name, metadata.get_collection_name()) != 0) {
+        return false;
+    }
+
+    if (std::strcmp(this->filename, metadata.get_filename()) != 0) {
+        return false;
+    }
+
+    return true;
 }
