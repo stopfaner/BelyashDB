@@ -2,14 +2,16 @@
 #include <map>
 #include <fstream>
 #include <cstring>
+#include "collection.h"
+#include <memory>
+
+#include "collection_metadata.h"
 #include "../response.h"
 #include "../../utils/logwrapper.h"
-#include "collection_metadata.h"
 #include "../metric/metric_manager.h"
-#include "collection.h"
 #include "../../utils/file_manager.h"
 #include "../../utils/uuid4.h"
-#include <memory>
+#include "../collection_utils.h"
 
 namespace storage {
 
@@ -46,12 +48,12 @@ namespace storage {
 
             static std::shared_ptr<CollectionManager> get_manager();
 
-            std::shared_ptr<std::map<std::string, Collection>> get_collections() const;
+            bool                        get_collections(std::vector<Collection> &vector) const;
 
             std::shared_ptr<Collection> get_collection(std::string name) const;
 
             // Creating new collection
-            bool                        create_collection(char *collection_name);
-            bool                        delete_collection(std::string collection_name);
+            CollectionCase              create_collection(char *collection_name);
+            CollectionCase              delete_collection(std::string collection_name);
     };
 }

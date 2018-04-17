@@ -8,15 +8,25 @@
 #include "statement.h"
 #include <boost/algorithm/string.hpp>
 
+#include "../storage/collection/collection_manager.h"
+#include "../storage/collection_utils.h"
+
 class InputParser {
 
     private:
-        
-        void get_parameters(char *command, uint16_t command_length, std::vector<std::string> &vec);
+
+        std::shared_ptr<storage::CollectionManager>      collection_manager;
+
+
+        void                                            get_parameters(char *command, uint16_t command_length, std::vector<std::string> &vec);
+
+        CollectionCase                                  create_collection(std::string collection_name);
+        CollectionCase                                  delete_collection(std::string collection_name);
+        std::string                                     show_collections();
 
     public:
 
         InputParser();
 
-        int accept_command(char *command);
+        char* accept_command(char *command);
 };

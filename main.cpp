@@ -16,7 +16,7 @@ int main(int argc , char *argv[])
     // MetricManager *manager = MetricManager::get_manager();
     // storage::Collection *collection = new storage::Collection("test_collection", "test_uuid");
     
-    // std::shared_ptr<storage::CollectionManager> manager = storage::CollectionManager::get_manager();
+    std::shared_ptr<storage::CollectionManager> manager = storage::CollectionManager::get_manager();
     // // manager->create_collection("coll");
     // // manager->create_collection("coll3");
     // // LOG(manager->get_collections()->size());

@@ -78,7 +78,7 @@ std::shared_ptr<storage::Collection> storage::CollectionManager::_find_collectio
     return nullptr;
 }
 
-bool storage::CollectionManager::create_collection(char *collection_name) {
+CollectionCase storage::CollectionManager::create_collection(char *collection_name) {
 
     std::shared_ptr<CollectionMetadata> metadata = this->_find_collection_metadata(collection_name);
 
@@ -98,28 +98,28 @@ bool storage::CollectionManager::create_collection(char *collection_name) {
         // Checking if file was created
         std::unique_ptr<std::ifstream> ifs = std::make_unique<std::ifstream>(metadata->get_filename());
         if (ifs->good()) {
-            Collection *collection = new Collection(metadata->get_filename(), *metadata);
+            Collection *collection = new Collection(metadata->get_collection_name(), *metadata);
             collections->insert(std::make_pair(metadata->get_filename(), *collection));
         } else {
-            return false;
+            return CREATION_ERROR;
         }
 
-        return true;
+        return COLLECTION_CREATED;
     } else {
         logger->warn("Such collection already exists.");
 
-        return false;
+        return COLLECTION_EXIST;
     }
 }
 
-bool storage::CollectionManager::delete_collection(std::string collection_name) {
+CollectionCase storage::CollectionManager::delete_collection(std::string collection_name) {
 
     std::shared_ptr<CollectionMetadata> metadata = this->_find_collection_metadata(collection_name);
 
     if (metadata == nullptr) {
         this->logger->warn("Cannot delete collection. Does not exist.");
 
-        return false;
+        return COLLECTION_DOES_NOT_EXIST;
     } else {
         this->logger->info("Collection was successfully deleted.");
 
@@ -133,15 +133,24 @@ bool storage::CollectionManager::delete_collection(std::string collection_name) 
 
         this->metadata_manager->delete_data(*metadata.get());
 
-        return true;
+        return COLLECTION_DELETED;
     }
 
-    return false;
+    return DELETION_ERROR;
 }
 
 
-std::shared_ptr<std::map<std::string, storage::Collection>> storage::CollectionManager::get_collections() const {
-    return this->collections;
+bool storage::CollectionManager::get_collections(std::vector<storage::Collection> &vector) const {
+
+    for (std::map<std::string, Collection>::iterator iter = collections->begin(); iter != collections->end(); ++iter) {
+        vector.push_back(iter->second);
+    }
+
+    if (vector.size() == 0) {
+        return false;        
+    } 
+
+    return true;
 }
 
 std::shared_ptr<storage::Collection> storage::CollectionManager::get_collection(std::string name) const {

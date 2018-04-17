@@ -53,6 +53,7 @@ set (
     STORAGE_SOURCE
     core/storage/storage_manager.h
     core/storage/storage_manager.cpp
+    core/storage/collection_utils.h
 
     core/storage/collection/collection_manager.h
     core/storage/collection/collection_manager.cpp

@@ -45,10 +45,12 @@ void server::Session::accept_request(char *data, int valread) {
 
     printf(buffer);
 
-    int answer = this->input_parser->accept_command(buffer);
-    if (answer == 0)
+    char *answer = this->input_parser->accept_command(buffer);
+    if (std::strncmp(answer, "exit", 4) == 0)
         this->close_session(this->session_socket);
 
+    else 
+        send(session_socket, answer, strlen(answer), 0);
     // send(session_socket, parser_answer, strlen(parser_answer), 0); 
 }
 
