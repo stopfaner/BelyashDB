@@ -46,8 +46,10 @@ void server::Session::accept_request(char *data, int valread) {
     printf(buffer);
 
     char *answer = this->input_parser->accept_command(buffer);
-    if (std::strncmp(answer, "exit", 4) == 0)
+    if (std::strncmp(answer, "exit", 4) == 0) {
         this->close_session(this->session_socket);
+        send(session_socket, answer, strlen(answer), 0);
+    }
 
     else 
         send(session_socket, answer, strlen(answer), 0);

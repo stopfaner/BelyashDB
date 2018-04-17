@@ -43,7 +43,7 @@ char* InputParser::accept_command(char *command) {
 
     
     if (std::strncmp(command, "exit()", 6) == 0) {
-        return "exit";
+        return "quit \n";
     }
 
     if (std::strncmp(command, CREATE_COLLECTION, std::strlen(CREATE_COLLECTION) - 1) == 0) {
