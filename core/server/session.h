@@ -10,6 +10,7 @@
 #include <memory>
 #include "../utils/logwrapper.h"
 #include "../parse/input_parser.h"
+#include "context_manager.h"
 
 
 namespace server {
@@ -27,7 +28,9 @@ namespace server {
         // Session buffer of request
         char                    buffer[1025];
 
-        InputParser             *input_parser;       
+        InputParser             *input_parser;
+
+        ContextManager          *context_manager;     
 
         void init_loader(); 
     

@@ -20,10 +20,12 @@ void server::Session::init_loader() {
     logger->info("Setting up session");
 
     this->input_parser = new InputParser();
+    this->context_manager = new ContextManager();
 }
 
 server::Session::~Session() {
-    // Destruct here
+    delete input_parser;
+    delete context_manager;
 }
 
 server::Session* server::Session::open_session(int session_socket) {

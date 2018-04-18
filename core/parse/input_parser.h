@@ -20,9 +20,13 @@ class InputParser {
 
         void                                            get_parameters(char *command, uint16_t command_length, std::vector<std::string> &vec);
 
-        CollectionCase                                  create_collection(std::string collection_name);
-        CollectionCase                                  delete_collection(std::string collection_name);
-        std::string                                     show_collections();
+        CollectionCase                                  _create_collection(std::string collection_name);
+        CollectionCase                                  _delete_collection(std::string collection_name);
+        std::string                                     _show_collections();
+
+        char*                                           create_collection(char *command);
+        char*                                           delete_collection(char *command);
+        char*                                           show_collections(char *command);
 
     public:
 

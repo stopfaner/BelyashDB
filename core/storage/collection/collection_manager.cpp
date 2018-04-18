@@ -55,7 +55,7 @@ void storage::CollectionManager::_load_collections_map() {
 
 std::shared_ptr<storage::CollectionMetadata> storage::CollectionManager::_find_collection_metadata(std::string collection_name) {
 
-    std::map<std::string, CollectionMetadata>::const_iterator iter = collections_metadata->find(collection_name);
+    auto iter = collections_metadata->find(collection_name);
 
     if (iter == collections_metadata->end()) {
         return nullptr;
@@ -67,12 +67,12 @@ std::shared_ptr<storage::CollectionMetadata> storage::CollectionManager::_find_c
 }
 
 std::shared_ptr<storage::Collection> storage::CollectionManager::_find_collection(std::string collection_name) {
-    std::map<std::string, Collection>::const_iterator iter = collections->find(collection_name);
+    auto iter = collections->find(collection_name);
 
-    if (iter == collections->end()) {
-        return nullptr;
-    } else {
+    if (iter != collections->end()) {
         return std::make_shared<Collection>(iter->second);
+    } else {
+        return nullptr;
     }
 
     return nullptr;
@@ -81,7 +81,6 @@ std::shared_ptr<storage::Collection> storage::CollectionManager::_find_collectio
 CollectionCase storage::CollectionManager::create_collection(char *collection_name) {
 
     std::shared_ptr<CollectionMetadata> metadata = this->_find_collection_metadata(collection_name);
-
     // Check if such exists in map already
     if (metadata == nullptr) {
         
@@ -89,6 +88,7 @@ CollectionCase storage::CollectionManager::create_collection(char *collection_na
         CollectionMetadata *metadata = new CollectionMetadata(collection_name, uuid());
 
         this->metadata_manager->write_data(*metadata);
+        collections_metadata->insert(std::make_pair(metadata->get_collection_name(), *metadata));
 
         // Creating new collection file
         std::ofstream{

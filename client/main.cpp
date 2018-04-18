@@ -2,6 +2,10 @@
 #include <stdlib.h> 
 #include <sstream>
 
+char* get_help() {
+
+    return "-a %s  Set address of server \n-p %d  Set port of server \n-h     Get help \n";
+}
 
 int main(int argc, char *argv[]) {
 
@@ -24,12 +28,19 @@ int main(int argc, char *argv[]) {
                 std::cout << "Param -a has already been passed." << std::endl;
                 exit(EXIT_FAILURE);
             }
+
         } else if(std::strncmp(argv[i], port_param.c_str(), 2) == 0) {
             if (port == 0) {
                 if (argc > i + 1) {
                     std::stringstream value;
                     value << argv[i + 1];
                     value >> port;
+
+                    if (port == 0) {
+                        std::cout << "Incorrect value of -p argument." << std::endl;
+                        exit(EXIT_FAILURE);
+                    }
+
                     i++;
                 } else {
                     std::cout << "Not enough arguments to -p parameter." << std::endl;
@@ -39,6 +50,9 @@ int main(int argc, char *argv[]) {
                 std::cout << "Param -p has already been passed." << std::endl;
                 exit(EXIT_FAILURE);
             }
+        } else if(std::strncmp(argv[i], help_param.c_str(), 2) == 0) {
+            std::cout << get_help() << std::endl;
+            exit(EXIT_SUCCESS);
         }
     }
 

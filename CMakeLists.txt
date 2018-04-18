@@ -43,6 +43,10 @@ set (
     core/server/session_manager.cpp
     core/server/session.h
     core/server/session.cpp
+    core/server/context_manager.h
+    core/server/context_manager.cpp
+    core/server/context.h
+    core/server/context.cpp
 
     core/parse/input_parser.h
     core/parse/input_parser.cpp

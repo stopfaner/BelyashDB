@@ -17,8 +17,8 @@ int main(int argc , char *argv[])
     // storage::Collection *collection = new storage::Collection("test_collection", "test_uuid");
     
     std::shared_ptr<storage::CollectionManager> manager = storage::CollectionManager::get_manager();
-    // // manager->create_collection("coll");
-    // // manager->create_collection("coll3");
+    // manager->create_collection("coll");
+    // manager->create_collection("coll");
     // // LOG(manager->get_collections()->size());
     // std::shared_ptr<Collection> collection = manager->get_collection("coll");
 

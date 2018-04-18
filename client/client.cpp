@@ -21,9 +21,7 @@ bool Client::connect() {
 
         if ((he = gethostbyname(this->address.c_str())) == NULL) {
             
-            herror("gethostbyname");
             std::cout << "Failed to resolve hostname. \n" << std::endl;
-             
             return false;
         }
 
@@ -66,8 +64,7 @@ std::string Client::receive_response(int size) {
     std::string reply;
      
     //Receive a reply from the server
-    if( recv(sock , buffer , sizeof(buffer) , 0) < 0)
-    {
+    if(recv(sock, buffer, sizeof(buffer), 0) < 0) {
         puts("recv failed");
     }
      
